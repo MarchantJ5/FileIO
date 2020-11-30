@@ -15,7 +15,7 @@ namespace FileIO
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-          //  SetTheme();
+            SetTheme();
 
             DisplayLoginScreen();
 
@@ -26,7 +26,7 @@ namespace FileIO
 
         static void DisplayLoginScreen()
         {
-            string dataPath = @"TextFiles\Password.txt";
+            string dataPath = @"C:\Users\James Marchant\Desktop\School\Coding\Submissions\FileIO\FileIO\TextFiles\Password.txt";
             string fileText;
             string[] fileTextArray;
             string username;
@@ -78,18 +78,22 @@ namespace FileIO
         /// <summary>
         /// setup the console theme
         /// </summary>
-        //  static void SetTheme()
-        //{
-        //    string dataPath = @"C:\Users\James Marchant\Desktop\School\Coding\Submissions\FileIO\FileIO\bin\Debug\TextFiles\Color.txt";
-        //    string[] fileTextArray;
-        //    ConsoleColor backgroundColor;
-        //    ConsoleColor foregroundColor;
+           static void SetTheme()
+        {
+            string dataPath = @"C:\Users\James Marchant\Desktop\School\Coding\Submissions\FileIO\FileIO\TextFiles\Color.txt";
+            string[] fileTextArray;
+            ConsoleColor backgroundColor;
+            ConsoleColor foregroundColor;
 
-        //    fileTextArray = File.ReadAllLines(dataPath);
+            fileTextArray = File.ReadAllLines(dataPath);
 
-        //      Enum.TryParse(fileTextArray[0], out backgroundColor);
-        //      Enum.TryParse(fileTextArray[1], out foregroundColor);
-        //}
+              Enum.TryParse(fileTextArray[0], out backgroundColor);
+              Enum.TryParse(fileTextArray[1], out foregroundColor);
+
+            Console.BackgroundColor = backgroundColor;
+            Console.ForegroundColor = foregroundColor;
+            Console.Clear();
+        }
 
         /// <summary>
         /// *****************************************************************
@@ -163,6 +167,7 @@ namespace FileIO
                     Console.BackgroundColor = backgroundColor;
                     validResponse = true;
                     fileTextArray[0] = backgroundColor.ToString();
+                    Console.Clear();
                 }
                 else
                 {
@@ -196,16 +201,13 @@ namespace FileIO
 
         static void DisplayWriteToFile(string[] fileTextArray)
         {
-            string dataPath = @"TextFiles\Color.txt";
-            for (int index = 0; index < fileTextArray.Length; index++)
-            {
-                File.WriteAllText(dataPath, fileTextArray[index]);
-            }
+            string dataPath = @"C:\Users\James Marchant\Desktop\School\Coding\Submissions\FileIO\FileIO\TextFiles\Color.txt";
+            File.WriteAllLines(dataPath, fileTextArray);
         }
 
         static void DisplayPasswordChangeScreen()
         {
-            string dataPath = @"TextFiles\Password.txt";
+            string dataPath = @"C:\Users\James Marchant\Desktop\School\Coding\Submissions\FileIO\FileIO\TextFiles\Password.txt";
             string username;
             string password;
             string fileText;
@@ -243,7 +245,7 @@ namespace FileIO
 
             Console.Clear();
             Console.WriteLine();
-            Console.WriteLine("\t\tFinch Control");
+            Console.WriteLine("\t\tFileIO");
             Console.WriteLine();
 
             DisplayContinuePrompt();
